@@ -15,6 +15,7 @@ Chai with tweets
     {% endif %}
 
     <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}  
         {{ form.as_p }}
         <button class="btn btn-warning" type="submit">Submit</button>
     </form>
@@ -22,3 +23,6 @@ Chai with tweets
 
 </h2>
 {% endblock %}
+
+{% comment %} NOTES:when ever we use forms in django {% csrf_token %} are must to be used. {% endcomment %}
+ 

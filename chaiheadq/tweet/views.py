@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Tweet 
 from .forms import TweetForm
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -11,6 +12,7 @@ def tweet_list(request):
     tweets = Tweet.objects.all().order_by('-created_at')
     return render(request,'tweet_list.html',{'tweets':tweets})
 
+@login_required
 def tweet_create(request):
     if request.method == "POST":
         form = TweetForm(request.POST, request.FILES)
